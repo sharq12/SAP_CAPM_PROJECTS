@@ -1,0 +1,156 @@
+<mvc:View controllerName="com.showsalesorder.controller.SalesOrderList"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    displayBlock="true"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form">
+    <Page id="idpage1" title="{i18n>title}">
+        <content>
+         <Panel id="_IDGenPanel" headerText="Search Orders" expandable="true" expanded="false" class="sapUiSmallMargin" width="auto">
+          <f:SimpleForm id="_IDGenSimpleForm" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" emptySpanXL="0" emptySpanL="0" emptySpanM="0" columnsXL="3" columnsL="3" columnsM="3">
+            <f:content>
+              <core:Title id="_IDGenTitle1" text="Filters"></core:Title>
+              <Label id="_IDGenLabel12" text="SO Number"></Label>
+              <Input id="idSONo"></Input>
+              <Label id="_IDGenLabel5" text="Customer Name"></Label>
+              <Input id="idCustName"></Input>
+              <Label id="_IDGenLabel11" text="PO Number"></Label>
+              <Input id="idPoNo"></Input>
+              
+
+            <!-- <core:Title id="_IDGenTitle3" text="Sort"></core:Title>
+            <Label id="_IDGenLabel14" text="Sort Field"></Label>
+            <ComboBox id="idSortField" items="{lookupModel>/aEmpTabCols}">
+              <items>
+                <core:Item id="_IDGenItem" text="{lookupModel>text}" key="{lookupModel>key}"></core:Item>
+              </items>
+            </ComboBox>
+            <Label id="_IDGenLabel15" text="Sort Order"></Label>
+            <RadioButtonGroup id="idSortOrder" selectedIndex="-1" columns="2">
+              <buttons>
+                <RadioButton id="_IDGenRadioButton" text="Ascending"></RadioButton>
+                <RadioButton id="_IDGenRadioButton1" text="Descending"></RadioButton>
+              </buttons>
+            </RadioButtonGroup> -->
+
+
+            </f:content>
+          </f:SimpleForm>
+          <FlexBox id="_IDGenFlexBox1" justifyContent="End">
+            <Button id="_IDGenButton1" text="Go" type="Accept" icon="sap-icon://accept" press="onPressGo"></Button>
+            <Button id="_IDGenButton2" text="Reset" type="Reject" icon="sap-icon://reset" press="onPressReset" class="sapUiTinyMarginBegin"></Button>
+          </FlexBox>
+      </Panel>
+      <Panel id="idCreateSO" headerText="Create SalesOrder" expandable="true" expanded="false" class="sapUiSmallMargin" width="auto">
+         <f:SimpleForm id="_IDGenSimpleForm1" editable="true" layout="ResponsiveGridLayout" labelSpanXL="2" labelSpanL="2" labelSpanM="2" emptySpanXL="6" emptySpanL="6" emptySpanM="6">
+                    <f:content>
+                        <!-- <Label id="_IDGenLabel13" text="soNumber"></Label>
+                        <Input id="idsoNumber" value="{soNumber}"></Input>
+                        <Label id="_IDGenLabel14" text="customer Name"></Label>
+                        <Input id="idcustomerName" value="{customerName}"></Input>
+                        <Label id="_IDGenLabel15" text="customer Number"></Label>
+                        <Input id="idcustomerNumber" value="{customerNumber}"></Input>
+                        <Label id="_IDGenLabel16" text="Po Number"></Label>
+                        <Input id="idPoNumber" value="{PoNumber}"></Input>
+                        <Label id="_IDGenLabel17" text="Inquiry Number"></Label>
+                        <Input id="idinquiryNumber" value="{inquiryNumber}"></Input>
+                        <Label id="_IDGenLabel20" text="totalOrderItems"></Label> 
+                        <Input id="idtotalOrderItems" value="{totalOrderItems}"></Input>
+                        <Label id="_IDGenLabel18" text="order Date"></Label>  -->
+                        <!-- <DatePicker id="idorderDate" valueFormat="yyyy-MM-ddT00:00:00" displayFormat="dd-MM-yyyy" dateValue="{orderDate}"></DatePicker> -->
+                      
+                        <Label id="_IDGenLabel13" text="soNumber"></Label>
+                        <Input id="idsoNumber"></Input>
+                        <Label id="_IDGenLabel14" text="customer Name"></Label>
+                        <Input id="idcustomerName"></Input>
+                        <Label id="_IDGenLabel15" text="customer Number"></Label>
+                        <Input id="idcustomerNumber"></Input>
+                        <Label id="_IDGenLabel16" text="Po Number"></Label>
+                        <Input id="idPoNumber" ></Input>
+                        <Label id="_IDGenLabel17" text="Inquiry Number"></Label>
+                        <Input id="idinquiryNumber"></Input>
+                        <Label id="_IDGenLabel20" text="totalOrderItems"></Label> 
+                        <Input id="idtotalOrderItems"></Input>
+                    </f:content>
+                </f:SimpleForm>
+                <FlexBox id="_IDGenFlexBox2" justifyContent="End">
+                    <Button id="_IDGenButton3" text="Save" icon="sap-icon://save" type="Emphasized" press="onPressSave"></Button>
+                    <Button id="_IDGenButton4" text="Cancel" icon="sap-icon://cancel" type="Reject" press="onPressCancel" class="sapUiTinyMarginBegin"></Button>
+                </FlexBox>
+      </Panel>
+          <!-- <Button id="_IDGenButton" text="Nav to ProductDetail view" press="onPress" /> -->
+          <Table id="idSalesTable" headerText="Sales Orders"
+                 mode="SingleSelectLeft"
+                 selectionChange="onSalesOrderChange"
+                 growing="true"
+                 growingThreshold="5"
+                 class="sapuiResponsiveMargin"
+                 width="auto"
+                 items="{/Interactions_SalesOrders}" >
+               <headerToolbar>
+          <Toolbar id="_IDGenToolbar1" >
+            <Title id="_IDGenTitle3" text="Sales Orders"></Title>
+             <ToolbarSpacer id="_IDGenToolbarSpacer1" ></ToolbarSpacer>
+            <!-- <Button id="_IDPCreate" text="Create New SalesOrder" icon="sap-icon://add" type="Emphasized" press="onPressCreate"></Button> -->
+            <Button id="_IDPEdit" text="Edit SalesOrder" icon="sap-icon://edit" type="Emphasized" press="onPressEdit"></Button>
+              <Button id="_IDSaveSO" text="Save SalesOrder" icon="sap-icon://save" type="Emphasized" press="onPressEditSave"></Button>
+            <Button id="_IDPDelete" enabled="false" text="Delete SalesOrder" icon="sap-icon://delete" type="Reject" press="onPressDelete"></Button> 
+          </Toolbar>
+        </headerToolbar>
+              <columns>
+                <Column id="_IDGenColumn" >
+                  <header>
+                    <Text id="_IDGenText1" text="SO Number"  />
+                  </header>
+                </Column>
+                <Column id="_IDGenColumn2" >
+                  <header>
+                    <Text id="_IDGenText2" text="customer Name"  />
+                  </header>
+                </Column>
+                <Column id="_IDGenColumn3" >
+                   <header>
+                    <Text id="_IDGenText3" text="customer Number"  />
+                  </header>
+                </Column>
+                <Column id="_IDGenColumn4" >
+                  <header>
+                    <Text id="_IDGenText4" text="order Date"  />
+                  </header>
+                </Column>
+                <Column id="_IDGenColumn5" >
+                  <header>
+                    <Text id="_IDGenText5" text="PO Number"  />
+                  </header>
+                </Column>
+                <Column id="_IDGenColumn6" >
+                  <header>
+                    <Text id="_IDGenText6" text="Inquiry Number"  />
+                  </header>
+                </Column>
+                <Column id="_IDGenColumn7" >
+                  <header>
+                    <Text id="_IDGenText7" text="totalOrderItems"  />
+                  </header>
+                </Column>
+              </columns>
+              <items>
+                <ColumnListItem id="_IDGenColumnListItem" press="onPressNav" type="Navigation" >
+                 <cells>
+                  <ObjectIdentifier id="_IDGenObjectIdentifier" title="{soNumber}"></ObjectIdentifier>
+                  <Text id="_IDGenText8" text="{customerName}"/>
+                  <Text id="_IDGenText9" text="{customerNumber}"/>
+                  <Text id="_IDGenText10" text="{orderDate}"/>
+                  <Text id="_IDGenText11" text="{PoNumber}"/>
+                  <Text id="_IDGenText12" text="{inquiryNumber}"/>
+                  <Text id="_IDGenText13" text="{totalOrderItems}"/>
+                 </cells>
+                </ColumnListItem>
+              </items>
+            </Table>
+        </content>
+        <footer>
+        </footer>
+    </Page>
+</mvc:View>
